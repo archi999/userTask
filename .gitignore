@@ -1,0 +1,10 @@
+# Ignore node_modules folders in all subfolders
+userService/node_modules/
+taskService/node_modules/
+notificationService/node_modules/
+
+# Ignore environment files in all services
+userService/.env
+taskService/.env
+notificationService/.env
+

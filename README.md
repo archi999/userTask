@@ -22,7 +22,7 @@ The system uses **Node.js**, **Express**, **PostgreSQL**, **Redis**, **JWT** for
 
 ## 📁 Folder Structure
 
-
+```
 Service/
 ├── userService/
 ├── taskService/
@@ -33,7 +33,7 @@ Service/
 │ ├── notificationService.env
 ├── docker-compose.yml
 ├── README.md
-
+```
 
 ---
 

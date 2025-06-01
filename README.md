@@ -52,7 +52,7 @@ Service/
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/userTask.git
+   git clone https://github.com/archi999/userTask.git
    cd userTask
 2. Set up environment variables:
 Create .env files in the env/ directory or directly in each service folder.

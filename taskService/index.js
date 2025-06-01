@@ -7,5 +7,10 @@ app.use(express.json());
 
 app.use('/tasks', authMiddleware, taskRoutes);
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Task service listening on port ${PORT}`));
+app.get('/ping', (req, res) => {
+  res.json({
+    message:"success"
+  });
+});
+
+app.listen(3002, () => console.log(`Task service listening on port 3002`));

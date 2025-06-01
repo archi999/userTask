@@ -1,0 +1,22 @@
+services:
+  user_service:
+    image: genea_user_service
+    container_name: genea_user_service
+    build: ./userService/
+    env_file: ./env/userService.env
+    ports:
+      - "3050:3001"
+  
+  task_service:
+    image: genea_task_service
+    container_name: genea_task_service
+    build: ./taskService/
+    env_file: ./env/taskService.env
+    ports:
+      - "3051:3002"
+  
+  notification_service:
+    image: genea_notification_service
+    container_name: genea_notification_service
+    build: ./notificationService/
+    env_file: ./env/notificationService.env

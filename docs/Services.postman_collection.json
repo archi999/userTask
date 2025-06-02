@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "83b12970-58f2-46c4-a4d8-92357a81c526",
+		"name": "Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45509129"
+	},
+	"item": [
+		{
+			"name": "Task Service",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{task_service_base_url}}/ping",
+							"host": [
+								"{{task_service_base_url}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{task_service_base_url}}/tasks",
+							"host": [
+								"{{task_service_base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{task_service_base_url}}/tasks",
+							"host": [
+								"{{task_service_base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoiYXJjaGk5ODlAZ21haWwuY29tIiwiaWF0IjoxNzQ4NzY5NTc4LCJleHAiOjE3NDg3NzMxNzh9.tWkf1eS0RkOlwwHkkBNcL_8XApuEDDy1BVC2nPRRdB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Create Task\", \r\n    \"description\":\"New task has created\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{task_service_base_url}}/tasks",
+							"host": [
+								"{{task_service_base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsImVtYWlsIjoiYXJjaGk5ODlAZ21haWwuY29tIiwiaWF0IjoxNzQ4NzY4ODYxLCJleHAiOjE3NDg3NzI0NjF9.LBc0lDvgYxUMdVjbzgIGMVZEHpD9h0gZ9a0Y57FOqcs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Create Task\", \r\n    \"description\":\"New task has Updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{task_service_base_url}}/tasks/8",
+							"host": [
+								"{{task_service_base_url}}"
+							],
+							"path": [
+								"tasks",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{task_service_base_url}}/tasks",
+							"host": [
+								"{{task_service_base_url}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Service",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{user_service_base_url}}/ping",
+							"host": [
+								"{{user_service_base_url}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Archiii136\",\r\n    \"email\":\"archi980@gmail.com\", \r\n    \"password\": \"nfdwuegvh\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_service_base_url}}/signup",
+							"host": [
+								"{{user_service_base_url}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"archi98@gmail.com\", \r\n    \"password\": \"nfdwuegvh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user_service_base_url}}/login",
+							"host": [
+								"{{user_service_base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

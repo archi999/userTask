@@ -8,34 +8,28 @@ This project is a **microservices-based task management application** designed w
 
 The system uses **Node.js**, **Express**, **PostgreSQL**, **Redis**, **JWT** for authentication, and **Docker** for containerization.
 
----
 
 ## 🧰 Technologies Used
 
 - **Backend**: Node.js, Express.js  
-- **Database**: PostgreSQL (hosted on Render or other providers)  
+- **Database**: PostgreSQL (hosted on Render)  
 - **Caching/Event Bus**: Redis  
 - **Authentication**: JSON Web Tokens (JWT)  
 - **Containerization**: Docker, Docker Compose  
 
----
 
-## 📁 Folder Structure
+## 📁 Folder Structure  
+    Service/ 
+    ├── userService/               
+    ├── taskService/              
+    ├── notificationService/      
+    ├── env/                       
+    │   ├── userService.env
+    │   ├── taskService.env
+    │   ├── notificationService.env
+    ├── docker-compose.yml         
+    ├── README.md                 
 
-```
-Service/
-├── userService/
-├── taskService/
-├── notificationService/
-├── env/
-│ ├── userService.env
-│ ├── taskService.env
-│ ├── notificationService.env
-├── docker-compose.yml
-├── README.md
-```
-
----
 
 ## 🚀 Getting Started
 
@@ -45,111 +39,69 @@ Service/
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
----
 
-## 🔧 Installation
+### 📝 API Endpoints
 
-1. **Clone the repository**:
+1. 👤 **User Service**
+    ```   
+    POST /signup – Register a new user
+    POST /login – Authenticate and receive a JWT
+    GET /profile – Get user details (JWT required)
+    ```
 
-   ```bash
-   git clone https://github.com/archi999/userTask.git
-   cd userTask
-2. Set up environment variables:
-Create .env files in the env/ directory or directly in each service folder.
+2. ✅ **Task Service**
 
-3. Provision external services:
---PostgreSQL Database (e.g. Render)
---Redis Cache Server
+    All endpoints require JWT in the Authorization header.
+    ```
+    GET /tasks – List all tasks for the user
+    POST /tasks – Create a new task
+    PUT /tasks/:id – Update a task
+    DELETE /tasks/:id – Delete a task
+    PUT /tasks/:id/status – Mark a task as complete/incomplete
+    ```
 
-4. Edit environment variables:
-Update all .env files with appropriate values:
+3. 🔔 **Notification Service**
 
-# userService.env / taskService.env / notificationService.env
-REDIS_URL=redis://<username>:<password>@<host>:<port>
-DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<db_name>
-JWT_SECRET=your_jwt_secret_key
-
-5. Run the application:
-docker compose up --build
-# This command builds and starts all microservices along with PostgreSQL and Redis (if using local containers).
-
-🔐 Authentication & Authorization
-
-1. User Service:
-Registers and authenticates users.
-Returns a JWT token upon successful login.
-
-2. Task Service:
-Validates JWT tokens with User Service via /profile endpoint.
-Only authorized users can access their tasks.
+    Subscribes to task events via Redis pub/sub.
+    
+    Logs task creation, update, or completion events to the console.
 
 
-📝 API Endpoints
+### 🛠️ Deployment Instructions
 
-👤 User Service (/user-service)
+1. Provision a PostgreSQL database server instance.
 
-POST /signup – Register a new user.
-POST /login – Authenticate and receive a JWT.
-GET /profile – Get user details (JWT required).
+2. Provision a Redis cache server instance.
 
-✅ Task Service (/task-service)
-All endpoints require JWT in the Authorization header.
+3. Clone the repository onto the deployment server using Git:
 
-GET /tasks – List all tasks for the user.
-POST /tasks – Create a new task.
-PUT /tasks/:id – Update a task.
-DELETE /tasks/:id – Delete a task.
-PUT /tasks/:id/status – Mark a task as complete/incomplete.
+    ```bash
+    git clone https://github.com/archi999/userTask.git
+    cd userTask
+    ```
 
-🔔 Notification Service
+4.  Update the environment variables in all .env files located in the env/ directory as follows:
 
-Subscribes to task events via Redis pub/sub.
-Logs task creation, update, or completion to the console.
+    Redis Configuration
+    ```    
+    REDIS_URL=redis://<username>:<password>@<host>:<port>
 
+    (Replace <username>, <password>, <host>, and <port> with the credentials of the Redis instance 
+    created in step 2.)
+    ```
+    
+    PostgreSQL Configuration
+    ```
+    DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<db_name>
 
-🛠 Deployment Instructions
+    (Replace <username>, <password>, <host>, <port>, and <db_name> with the connection details of the PostgreSQL instance created in step 1.)
+    ```
 
-Provision a PostgreSQL database server instance.
-Provision a Redis cache server instance.
+6. Run the application using Docker Compose:
+    ```bash
+    docker compose up --build
+    ```
 
-Clone the repository onto the deployment server using Git:
-
-git clone https://github.com/your-username/userTask.git
-cd userTask
-
-Update the environment variables in all .env files located in the env directory:
-
-REDIS_URL=redis://<username>:<password>@<host>:<port>
-Replace with Redis credentials.
-
-DATABASE_URL=postgresql://<username>:<password>@<host>:<port>/<db_name>
-Replace with PostgreSQL connection info.
-
-Run the application:
-
-docker compose up
-
-
-🧪 Testing
-You can use Postman or cURL to interact with the API.
-A Postman collection is available in the repo (if provided) under docs/.
-
-Make sure to:
-
-Use JWT in the Authorization: Bearer <token> header.
-
-Validate task routes using a registered and logged-in user.
-
-📦 Environment Variables Summary
-# PostgreSQL Database
-DATABASE_URL=postgresql://username:password@host:port/dbname
-
-# Redis
-REDIS_URL=redis://username:password@host:port
-
-# JWT
-JWT_SECRET=your_jwt_secret_key
-
-
-🤝 Contributing
-Pull requests are welcome. For significant changes, open an issue to discuss the approach first.
+### 🧪 Testing
+    
+- Use provided Postman collection for API testing purpose.
